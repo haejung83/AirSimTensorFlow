@@ -1,0 +1,101 @@
+# Sequence to try this example
+
+# Gather images from the Airsim (with AirsimNH)
+haejung@DESKTOP-IP118FK /cygdrive/d/airsim/git/haejung_airsim_tensorflow $ python image_collection.py
+Try to connect
+Connected!
+Client Ver:1 (Min Req: 1), Server Ver:1 (Min Req: 1)
+
+Connected
+Collision at pos <Vector3r> {   'x_val': 134.44126892089844,
+    'y_val': 0.1623498499393463,
+    'z_val': -0.6904134154319763}, normal <Vector3r> {   'x_val': -0.9999999403953552,
+    'y_val': -3.2186508178710938e-06,
+    'z_val': -0.0}, impact pt <Vector3r> {   'x_val': 136.41468811035156,
+    'y_val': -0.5997985601425171,
+    'z_val': -1.3945653438568115}, penetration 0.062044, name Fence_250, obj id 6
+
+
+# Training with the gathered images
+haejung@DESKTOP-IP118FK /cygdrive/d/airsim/git/haejung_airsim_tensorflow $ python collision_training.py
+2018-12-15 01:19:34.440606: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2018-12-15 01:19:34.592852: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties:
+name: GeForce RTX 2070 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:01:00.0
+totalMemory: 8.00GiB freeMemory: 6.57GiB
+2018-12-15 01:19:34.593156: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-15 01:19:35.615082: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-15 01:19:35.615199: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0
+2018-12-15 01:19:35.615301: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N
+2018-12-15 01:19:35.615506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6309 MB memory) -> physical GPU (device: 0, name: GeForce RTX 2070, pci bus id: 0000:01:00.0, compute capability: 7.5)
+Epoch: 0000 cost = 0.556327224
+Epoch: 0010 cost = 0.377342880
+Epoch: 0020 cost = 0.302031279
+Epoch: 0030 cost = 0.248534992
+Epoch: 0040 cost = 0.209403008
+Epoch: 0050 cost = 0.179913044
+Epoch: 0060 cost = 0.157084212
+Epoch: 0070 cost = 0.138995260
+Epoch: 0080 cost = 0.124372341
+Epoch: 0090 cost = 0.112346068
+Epoch: 0100 cost = 0.102307007
+Epoch: 0110 cost = 0.093817599
+Epoch: 0120 cost = 0.086556695
+Epoch: 0130 cost = 0.080284096
+Epoch: 0140 cost = 0.074817076
+Epoch: 0150 cost = 0.070014201
+Epoch: 0160 cost = 0.065764710
+Epoch: 0170 cost = 0.061980743
+Epoch: 0180 cost = 0.058591701
+Epoch: 0190 cost = 0.055540361
+Epoch: 0200 cost = 0.052779783
+Epoch: 0210 cost = 0.050271191
+Epoch: 0220 cost = 0.047982454
+Epoch: 0230 cost = 0.045886450
+Epoch: 0240 cost = 0.043960243
+Epoch: 0250 cost = 0.042184461
+Epoch: 0260 cost = 0.040542491
+Epoch: 0270 cost = 0.039020043
+Epoch: 0280 cost = 0.037604671
+Epoch: 0290 cost = 0.036285810
+Epoch: 0300 cost = 0.035053864
+Epoch: 0310 cost = 0.033900835
+Epoch: 0320 cost = 0.032819472
+Epoch: 0330 cost = 0.031803317
+Epoch: 0340 cost = 0.030846793
+Epoch: 0350 cost = 0.029944861
+Epoch: 0360 cost = 0.029093038
+Epoch: 0370 cost = 0.028287357
+Epoch: 0380 cost = 0.027524203
+Epoch: 0390 cost = 0.026800249
+Epoch: 0400 cost = 0.026112681
+Epoch: 0410 cost = 0.025458917
+Epoch: 0420 cost = 0.024836421
+Epoch: 0430 cost = 0.024243075
+Epoch: 0440 cost = 0.023676988
+Epoch: 0450 cost = 0.023136204
+Epoch: 0460 cost = 0.022619192
+Epoch: 0470 cost = 0.022124358
+Epoch: 0480 cost = 0.021650372
+Epoch: 0490 cost = 0.021195948
+Optimization Finished; saving weights to params.pkl
+
+# Testing (with AirsimNH)
+haejung@DESKTOP-IP118FK /cygdrive/d/airsim/git/haejung_airsim_tensorflow $ python collision_testing.py
+2018-12-15 01:19:53.195120: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2018-12-15 01:19:53.381649: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties:
+name: GeForce RTX 2070 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:01:00.0
+totalMemory: 8.00GiB freeMemory: 6.57GiB
+2018-12-15 01:19:53.381951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-15 01:19:54.524644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-15 01:19:54.524792: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0
+2018-12-15 01:19:54.524879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N
+2018-12-15 01:19:54.525077: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6309 MB memory) -> physical GPU (device: 0, name: GeForce RTX 2070, pci bus id: 0000:01:00.0, compute capability: 7.5)
+2018-12-15 01:19:55.416674: E tensorflow/stream_executor/cuda/cuda_blas.cc:464] failed to create cublas handle: CUBLAS_STATUS_ALLOC_FAILED
+2018-12-15 01:19:55.417441: E tensorflow/stream_executor/cuda/cuda_blas.cc:464] failed to create cublas handle: CUBLAS_STATUS_ALLOC_FAILED
+2018-12-15 01:19:55.417606: W tensorflow/stream_executor/stream.cc:2127] attempting to perform BLAS operation using StreamExecutor without BLAS support
+Connected!
+Client Ver:1 (Min Req: 1), Server Ver:1 (Min Req: 1)
+
+Connected

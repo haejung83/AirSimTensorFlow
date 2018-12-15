@@ -10,7 +10,9 @@ This file is part of AirSimTensorFlow
 MIT License
 '''
 
-from AirSimClient import CarClient, CarControls, ImageRequest, AirSimImageType, AirSimClientBase
+#from AirSimClient import CarClient, CarControls, ImageRequest, AirSimImageType, AirSimClientBase
+from airsim import CarClient, CarControls, ImageRequest, ImageType
+from airsim import write_file
 import os
 import time
 import tensorflow as tf
@@ -64,11 +66,11 @@ with tf.Graph().as_default():
     while True:
 
         # Get RGBA camera images from the car
-        responses = client.simGetImages([ImageRequest(1, AirSimImageType.Scene)])
+        responses = client.simGetImages([ImageRequest(1, ImageType.Scene)])
 
         # Save it to a temporary file
         image = responses[0].image_data_uint8
-        AirSimClientBase.write_file(os.path.normpath(TMPFILE), image)
+        write_file(os.path.normpath(TMPFILE), image)
 
         # Read-load the image as a grayscale array
         image = loadgray(TMPFILE)
